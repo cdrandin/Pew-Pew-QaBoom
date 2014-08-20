@@ -48,7 +48,7 @@ public class CharacterMotor : MonoBehaviour
 
 		// Character left/right movement
 		float move = Input.GetAxis("Horizontal");
-
+	
 		// Set variable through the animator
 		anim.SetFloat("Speed", Mathf.Abs(move));
 
