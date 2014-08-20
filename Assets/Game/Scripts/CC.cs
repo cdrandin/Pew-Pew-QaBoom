@@ -6,11 +6,12 @@ public class CC : MonoBehaviour
 	public float max_speed       = 10.0f;
 	public float jump_height     = 6.0f;
 	public float fall_speed      = 15.0f;
+
 	public Transform ground_check;
 	public LayerMask what_is_ground;
 
 	private bool _face_right     = true;
-	[SerializeField]private bool _grounded       = false;
+	private bool _grounded       = false;
 	private bool is_moving       = false;
 	private float ground_radius  = 0.2f;
 
@@ -72,7 +73,6 @@ public class CC : MonoBehaviour
 
 		_cc.Move(movement);
 		_grounded = Physics.OverlapSphere(ground_check.position, ground_radius, what_is_ground).Length > 0;
-		//_grounded = _cc.isGrounded;
 
 		ImageFace(move);
 	}
