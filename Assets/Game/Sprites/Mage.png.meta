@@ -1,0 +1,366 @@
+fileFormatVersion: 2
+guid: ffa0c5500f678654798b85be89b6e756
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Mage_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_4
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_5
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_6
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_7
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 440
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_10
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_12
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_13
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_14
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_15
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 300
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_17
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_18
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_19
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_20
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_21
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_22
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_23
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 160
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_25
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_26
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_27
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_28
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_29
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_30
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Mage_31
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 20
+        width: 130
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
