@@ -8,11 +8,13 @@ public class CC : MonoBehaviour
 	public float fall_speed      = 15.0f;
 	public Transform ground_check;
 	public LayerMask what_is_ground;
-	
-	private bool _face_right     = true;
-	private bool _grounded       = false;
-	private bool is_moving       = false;
 
+	private bool _face_right     = true;
+	[SerializeField]private bool _grounded       = false;
+	private bool is_moving       = false;
+	private float ground_radius  = 0.2f;
+
+	private Animator _anim;
 	private Vector3 _move_direction;
 	private float _vertical_speed;
 	private CharacterController _cc;
@@ -20,11 +22,30 @@ public class CC : MonoBehaviour
 
 	void Start() 
 	{
+		_anim            = GetComponent<Animator>();
 		_cc             = GetComponent<CharacterController>();
 		_move_direction = Vector3.zero;
 		is_controllable = true;
 	}
-	
+
+	void Update()
+	{
+		if(_grounded && Input.GetKeyDown(KeyCode.Space))
+		{
+			_anim.SetBool("Ground", false);
+		}
+		
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			_anim.SetTrigger("Summon");
+		}
+		
+		if(Input.GetKeyDown(KeyCode.O))
+		{
+			_anim.SetTrigger("Attack");
+		}
+	}
+
 	void FixedUpdate() 
 	{
 		if(!is_controllable)
@@ -40,12 +61,18 @@ public class CC : MonoBehaviour
 		ApplyGravity();
 		Jump();
 
+		// Set variable through the animator
+		_anim.SetBool("Ground", _grounded);
+		_anim.SetFloat("vSpeed", _vertical_speed);
+		_anim.SetFloat("Speed", Mathf.Abs(move));
+
 		Vector3 movement = _move_direction * max_speed;
 		movement.y      += _vertical_speed;
 		movement        *= Time.fixedDeltaTime;
 
 		_cc.Move(movement);
-		_grounded = _cc.isGrounded;
+		_grounded = Physics.OverlapSphere(ground_check.position, ground_radius, what_is_ground).Length > 0;
+		//_grounded = _cc.isGrounded;
 
 		ImageFace(move);
 	}
