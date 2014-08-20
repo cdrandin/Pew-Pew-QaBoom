@@ -3,26 +3,25 @@ using System.Collections;
 
 public class CC : MonoBehaviour 
 {
-	public float max_speed      = 10.0f;
+	public float max_speed       = 10.0f;
 	public float jump_height     = 6.0f;
-	public float fall_speed     = 15.0f;
+	public float fall_speed      = 15.0f;
 	public Transform ground_check;
 	public LayerMask what_is_ground;
 	
-	private bool face_right     = true;
-	private bool grounded       = false;
-	private float ground_radius = 0.2f;
-	private bool is_moving      = false;
+	private bool _face_right     = true;
+	private bool _grounded       = false;
+	private bool is_moving       = false;
 
-	private Vector3 _direction;
+	private Vector3 _move_direction;
 	private float _vertical_speed;
 	private CharacterController _cc;
 	private bool is_controllable;
 
 	void Start() 
 	{
-		_cc            = GetComponent<CharacterController>();
-		_direction     = Vector3.zero;
+		_cc             = GetComponent<CharacterController>();
+		_move_direction = Vector3.zero;
 		is_controllable = true;
 	}
 	
@@ -41,28 +40,29 @@ public class CC : MonoBehaviour
 		ApplyGravity();
 		Jump();
 
-		Vector3 movement = _direction * max_speed;
-		movement.y += _vertical_speed;
-		movement *= Time.fixedDeltaTime;
+		Vector3 movement = _move_direction * max_speed;
+		movement.y      += _vertical_speed;
+		movement        *= Time.fixedDeltaTime;
 
 		_cc.Move(movement);
+		_grounded = _cc.isGrounded;
 
 		ImageFace(move);
 	}
 
 	void Move(float move)
 	{
-		_direction.x = move;
+		_move_direction.x = move;
 	}
 
 	void ApplyGravity()
 	{
-		_vertical_speed = (_cc.isGrounded)?0.0f:(_vertical_speed - fall_speed);
+		_vertical_speed = (_grounded)?0.0f:(_vertical_speed - fall_speed);
 	}
 
 	void Jump()
 	{
-		if(_cc.isGrounded)
+		if(_grounded)
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
@@ -71,22 +71,24 @@ public class CC : MonoBehaviour
 		}
 	}
 
+	// Decide when to flip image
 	void ImageFace(float move)
 	{
 		// Determine when to flip image
-		if(move > 0.0f && !face_right)
+		if(move > 0.0f && !_face_right)
 		{
 			ImageFlip();
 		}
-		else if(move < 0.0f && face_right)
+		else if(move < 0.0f && _face_right)
 		{
 			ImageFlip();
 		}
 	}
 
+	// Flips sprite image, reflective along the y-axis
 	void ImageFlip()
 	{
-		face_right = !face_right;
+		_face_right = !_face_right;
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
