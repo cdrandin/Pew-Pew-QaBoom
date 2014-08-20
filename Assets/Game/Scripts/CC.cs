@@ -65,7 +65,7 @@ public class CC : MonoBehaviour
 		// Set variable through the animator
 		_anim.SetBool("Ground", _grounded);
 		_anim.SetFloat("vSpeed", _vertical_speed);
-		_anim.SetFloat("Speed", Mathf.Abs(move));
+		_anim.SetBool("Moving", is_moving);
 
 		Vector3 movement = _move_direction * max_speed;
 		movement.y      += _vertical_speed;

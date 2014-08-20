@@ -50,7 +50,7 @@ public class CharacterMotor : MonoBehaviour
 		float move = Input.GetAxis("Horizontal");
 	
 		// Set variable through the animator
-		anim.SetFloat("Speed", Mathf.Abs(move));
+		anim.SetFloat("Speed", Mathf.Abs(move)); // HACK: Reminder. In the animator. Make sure to include Speed condition to be GREATER than 0.0f to get animation working again for rigidbodies
 
 		// Movement of character
 		rigidbody2D.velocity = new Vector2(move * max_speed, rigidbody2D.velocity.y);
