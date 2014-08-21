@@ -6,15 +6,15 @@ public class CC : MonoBehaviour
 	public float max_speed       = 10.0f;
 	public float jump_height     = 6.0f;
 	public float fall_speed      = 15.0f;
-	public float push_power       = 2.0f;
+	public float push_power      = 2.0f;
 
 	public Transform ground_check;
 	public LayerMask what_is_ground;
 
 	private bool _face_right     = true;
 	private bool _grounded       = false;
-	private bool is_moving       = false;
-	private float ground_radius  = 0.2f;
+	private bool _is_moving      = false;
+	private bool _jumped         = false;
 
 	private Animator _anim;
 	private Vector3 _move_direction;
@@ -46,6 +46,13 @@ public class CC : MonoBehaviour
 		{
 			_anim.SetTrigger("Attack");
 		}
+
+		_grounded   = _cc.isGrounded;
+		
+		if(_grounded)
+		{
+			_jumped = false;
+		}
 	}
 
 	void FixedUpdate() 
@@ -57,7 +64,7 @@ public class CC : MonoBehaviour
 
 		// Character left/right movement
 		float move = Input.GetAxis("Horizontal");
-		is_moving = Mathf.Abs(move) > 0.1f;
+		_is_moving = Mathf.Abs(move) > 0.1f;
 
 		Move(move);
 		ApplyGravity();
@@ -65,16 +72,15 @@ public class CC : MonoBehaviour
 
 		// Set variable through the animator
 		_anim.SetBool("Ground", _grounded);
+		Debug.Log(_grounded);
 		_anim.SetFloat("vSpeed", _vertical_speed);
-		_anim.SetBool("Moving", is_moving);
+		_anim.SetBool("Moving", _is_moving);
 
 		Vector3 movement = _move_direction * max_speed;
 		movement.y      += _vertical_speed;
 		movement        *= Time.fixedDeltaTime;
 
 		_cc.Move(movement);
-		//_grounded = Physics.OverlapSphere(ground_check.position, ground_radius, what_is_ground).Length > 0;
-		_grounded   = _cc.isGrounded;
 
 		ImageFace(move);
 	}
@@ -86,18 +92,19 @@ public class CC : MonoBehaviour
 
 	void ApplyGravity()
 	{
-		_vertical_speed = (_grounded)?0.0f:(_vertical_speed - fall_speed);
+		_vertical_speed = (_grounded)?-_cc.stepOffset / Time.deltaTime:(_vertical_speed - fall_speed);
 	}
 
 	void Jump()
 	{
-		//if(_grounded)
-		//{
+		if(!_jumped)
+		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				_vertical_speed = Mathf.Sqrt(2 * jump_height * fall_speed);
+				_jumped         = true;
 			}
-		//}
+		}
 	}
 
 	// Decide when to flip image
