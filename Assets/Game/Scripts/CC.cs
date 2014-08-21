@@ -23,7 +23,7 @@ public class CC : MonoBehaviour
 
 	void Start() 
 	{
-		_anim            = GetComponent<Animator>();
+		_anim           = GetComponent<Animator>();
 		_cc             = GetComponent<CharacterController>();
 		_move_direction = Vector3.zero;
 		is_controllable = true;
@@ -72,7 +72,8 @@ public class CC : MonoBehaviour
 		movement        *= Time.fixedDeltaTime;
 
 		_cc.Move(movement);
-		_grounded = Physics.OverlapSphere(ground_check.position, ground_radius, what_is_ground).Length > 0;
+		//_grounded = Physics.OverlapSphere(ground_check.position, ground_radius, what_is_ground).Length > 0;
+		_grounded   = _cc.isGrounded;
 
 		ImageFace(move);
 	}
