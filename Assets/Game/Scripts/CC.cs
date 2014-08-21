@@ -32,9 +32,17 @@ public class CC : MonoBehaviour
 
 	void Update()
 	{
+		_grounded = _cc.isGrounded;
+
+		if(_grounded)
+		{
+			_jumped = false;
+		}
+
 		if(_grounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			_anim.SetBool("Ground", false);
+			_jumped = true;
 		}
 		
 		if(Input.GetKeyDown(KeyCode.P))
@@ -45,13 +53,6 @@ public class CC : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.O))
 		{
 			_anim.SetTrigger("Attack");
-		}
-
-		_grounded   = _cc.isGrounded;
-		
-		if(_grounded)
-		{
-			_jumped = false;
 		}
 	}
 
@@ -97,13 +98,10 @@ public class CC : MonoBehaviour
 
 	void Jump()
 	{
-		if(!_jumped)
+		if(_jumped)
 		{
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				_vertical_speed = Mathf.Sqrt(2 * jump_height * fall_speed);
-				_jumped         = true;
-			}
+			_vertical_speed = Mathf.Sqrt(2 * jump_height * fall_speed);
+			_jumped         = false;
 		}
 	}
 
@@ -124,15 +122,16 @@ public class CC : MonoBehaviour
 	// Flips sprite image, reflective along the y-axis
 	void ImageFlip()
 	{
-		_face_right = !_face_right;
-		Vector3 scale = transform.localScale;
-		scale.x *= -1;
+		_face_right          = !_face_right;
+		Vector3 scale        = transform.localScale;
+		scale.x             *= -1;
 		transform.localScale = scale;
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit hit) 
 	{
 		Rigidbody body = hit.collider.attachedRigidbody;
+
 		if (body == null || body.isKinematic)
 			return;
 		
@@ -140,6 +139,6 @@ public class CC : MonoBehaviour
 			return;
 		
 		Vector3 push_direction = new Vector3(hit.moveDirection.x, hit.moveDirection.y, 0.0f);
-		body.velocity = push_direction * push_power;
+		body.velocity          = push_direction * push_power;
 	}
 }
