@@ -6,6 +6,7 @@ public class CC : MonoBehaviour
 	public float max_speed       = 10.0f;
 	public float jump_height     = 6.0f;
 	public float fall_speed      = 15.0f;
+	public float push_power       = 2.0f;
 
 	public Transform ground_check;
 	public LayerMask what_is_ground;
@@ -90,13 +91,13 @@ public class CC : MonoBehaviour
 
 	void Jump()
 	{
-		if(_grounded)
-		{
+		//if(_grounded)
+		//{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				_vertical_speed = Mathf.Sqrt(2 * jump_height * fall_speed);
 			}
-		}
+		//}
 	}
 
 	// Decide when to flip image
@@ -120,5 +121,18 @@ public class CC : MonoBehaviour
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+
+	void OnControllerColliderHit(ControllerColliderHit hit) 
+	{
+		Rigidbody body = hit.collider.attachedRigidbody;
+		if (body == null || body.isKinematic)
+			return;
+		
+		if (hit.moveDirection.y < -0.3f)
+			return;
+		
+		Vector3 push_direction = new Vector3(hit.moveDirection.x, hit.moveDirection.y, 0.0f);
+		body.velocity = push_direction * push_power;
 	}
 }
