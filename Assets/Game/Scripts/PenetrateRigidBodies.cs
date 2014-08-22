@@ -5,6 +5,8 @@ public class PenetrateRigidBodies : MonoBehaviour
 {
 	public float force;
 	public float sqrd_velocity_threshold = .1f; // When to stop desotrying objects ("At what speed" to stop)
+	public float deterrence = 8.0f; 
+
 	void Start()
 	{
 	}
@@ -28,7 +30,7 @@ public class PenetrateRigidBodies : MonoBehaviour
 		float amount = Vector3.SqrMagnitude(rigidbody.velocity);
 		if(collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects") && (amount > sqrd_velocity_threshold))
 		{
-			rigidbody.velocity *= 1.0f/8.0f;
+			rigidbody.velocity *= 1.0f/deterrence;
 			Destroy(collision.gameObject);
 		}
 
