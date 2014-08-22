@@ -33,12 +33,4 @@ public class MapEditor : MonoBehaviour
 		_obj.transform.localScale = new Vector3(radius, radius, 0.0f);
 		_obj.GetComponent<DestroyRigids>().continous_delete = continous_delete;
 	}
-
-	void OnCollisionEnter(Collision collision)
-	{
-		if(continous_delete && collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects"))
-		{
-			Destroy(collision.gameObject);
-		}
-	}
 }

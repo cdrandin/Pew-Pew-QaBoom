@@ -18,7 +18,9 @@ public class DestroyRigids : MonoBehaviour
 	}
 	void OnCollisionEnter(Collision collision)
 	{
-		if(_continous_delete && collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects"))
+		bool clip = (continous_delete || Input.GetMouseButton(0))?true:false;
+
+		if(clip && collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects"))
 		{
 			Destroy(collision.gameObject);
 		}

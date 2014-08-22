@@ -79,6 +79,7 @@ public class CC : MonoBehaviour
 		Vector3 movement = _move_direction * max_speed;
 		movement.y      += _vertical_speed;
 		movement        *= Time.fixedDeltaTime;
+		movement.z       = 0.0f;
 
 		_cc.Move(movement);
 
