@@ -4,12 +4,12 @@ using System.Collections;
 public class PenetrateRigidBodies : MonoBehaviour 
 {
 	public float force;
-
+	public float sqrd_velocity_threshold = .1f; // When to stop desotrying objects ("At what speed" to stop)
 	void Start()
 	{
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.z = Mathf.Abs(0.0f - Camera.main.transform.position.z);
@@ -26,12 +26,13 @@ public class PenetrateRigidBodies : MonoBehaviour
 	{
 		Debug.Log(Vector3.SqrMagnitude(rigidbody.velocity));
 		float amount = Vector3.SqrMagnitude(rigidbody.velocity);
-		if(collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects") && (amount > .1f))
+		if(collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects") && (amount > sqrd_velocity_threshold))
 		{
+			rigidbody.velocity *= 1.0f/8.0f;
 			Destroy(collision.gameObject);
 		}
 
-		if(amount <= .1f)
+		if(amount <= sqrd_velocity_threshold)
 		{
 			rigidbody.velocity = Vector3.zero;
 		}
