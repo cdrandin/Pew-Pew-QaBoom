@@ -73,7 +73,6 @@ public class CC : MonoBehaviour
 
 		// Set variable through the animator
 		_anim.SetBool("Ground", _grounded);
-		Debug.Log(_grounded);
 		_anim.SetFloat("vSpeed", _vertical_speed);
 		_anim.SetBool("Moving", _is_moving);
 
