@@ -19,7 +19,7 @@ public class PenetrateRigidBodies : MonoBehaviour
 
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			rigidbody.AddForce((mousePos - transform.position).normalized * force);
+			rigidbody.AddForce((mousePos - transform.position).normalized * force * rigidbody.mass);
 		}
 	}
 
