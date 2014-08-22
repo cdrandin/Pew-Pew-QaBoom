@@ -11,13 +11,7 @@ public class MapEditor : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		_obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-		_obj.AddComponent<Rigidbody>();
-		_obj.rigidbody.freezeRotation = true;
-		_obj.rigidbody.drag = 0.08f;
-		_obj.rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-		_obj.rigidbody.useGravity = false;
-		_obj.rigidbody.isKinematic = false;
+		_obj = gameObject;
 		_obj.AddComponent<DestroyRigids>();
 		_obj.GetComponent<DestroyRigids>().continous_delete = continous_delete;
 	}

@@ -16,13 +16,19 @@ public class DestroyRigids : MonoBehaviour
 			_continous_delete = value;
 		}
 	}
-	void OnCollisionEnter(Collision collision)
+
+	void Update()
 	{
 		bool clip = (continous_delete || Input.GetMouseButton(0))?true:false;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
 
-		if(clip && collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects"))
+		if (Physics.Raycast(ray, out hit, 100.0f))
 		{
-			Destroy(collision.gameObject);
+			if(clip && hit.transform.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects"))
+			{
+				Destroy(hit.transform.gameObject);
+			}
 		}
 	}
 }
