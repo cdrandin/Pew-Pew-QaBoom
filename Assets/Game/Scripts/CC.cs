@@ -22,6 +22,15 @@ public class CC : MonoBehaviour
 	private CharacterController _cc;
 	private bool is_controllable;
 
+	public bool is_grounded
+	{
+		get { return _grounded; }
+	}
+	 public bool is_moving
+	{
+		get { return _is_moving; }
+	}
+
 	void Start() 
 	{
 		_anim           = GetComponent<Animator>();
@@ -79,9 +88,9 @@ public class CC : MonoBehaviour
 		Vector3 movement = _move_direction * max_speed;
 		movement.y      += _vertical_speed;
 		movement        *= Time.fixedDeltaTime;
-		movement.z       = 0.0f;
 
 		_cc.Move(movement);
+		_cc.transform.position = new Vector3(_cc.transform.position.x, _cc.transform.position.y, 0.0f);
 
 		ImageFace(move);
 	}

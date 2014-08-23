@@ -23,20 +23,21 @@ public class PenetrateRigidBodies : MonoBehaviour
 		}
 	}
 
-	// Rigidbody works best when mass is 100kg
 	void OnCollisionExit(Collision collision)
 	{
-		Debug.Log(Vector3.SqrMagnitude(rigidbody.velocity));
 		float amount = Vector3.SqrMagnitude(rigidbody.velocity);
+		Debug.Log(amount);
 		if(collision.gameObject.layer == LayerMask.NameToLayer("Dynamic Objects") && (amount > sqrd_velocity_threshold))
 		{
+			Debug.Log("Destroy");
 			rigidbody.velocity *= 1.0f/deterrence;
 			Destroy(collision.gameObject);
 		}
 
 		if(amount <= sqrd_velocity_threshold)
 		{
-			rigidbody.velocity = Vector3.zero;
+			Debug.Log("Stop");
+			rigidbody.isKinematic = true;
 		}
 	}
 }
