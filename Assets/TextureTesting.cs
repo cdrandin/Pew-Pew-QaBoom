@@ -16,8 +16,6 @@ public class TextureTesting : MonoBehaviour
 
 	public COLLISION_COLOR_PRORITY collision_color;
 
-	public float vertical_offset;
-
 	private CC _player;
 
 	void Awake()
@@ -51,23 +49,11 @@ public class TextureTesting : MonoBehaviour
 
 		background.transform.localScale = new Vector3(obj_width, obj_height, 0.1f);
 		*/
-
 	}
 
 	void Update()
 	{
-		if(_player.is_moving || !_player.is_grounded)
-		{
-			Vector3 world_pos  = _player.transform.GetChild(0).position;
-			world_pos.y -= vertical_offset;
-
-			Vector3 screen_pos = Camera.main.WorldToScreenPoint(world_pos);
-
-			if(CheckBlackWhite(Camera.main.ScreenPointToRay(screen_pos), collision_color))
-			{
-				ground_platform.transform.position = world_pos;
-			}
-		}
+		SetNewPositionOnCollision();
 	}
 
 	void DifferentTypesColors( Color color )
@@ -75,6 +61,20 @@ public class TextureTesting : MonoBehaviour
 		if(!_dif_colors.Contains(color))
 		{
 			_dif_colors.Add(color);
+		}
+	}
+
+	void SetNewPositionOnCollision()
+	{
+		if(_player.is_moving || !_player.is_grounded)
+		{
+			Vector3 world_pos  = _player.transform.GetChild(0).position;
+			Vector3 screen_pos = Camera.main.WorldToScreenPoint(world_pos);
+			
+			if(CheckBlackWhite(Camera.main.ScreenPointToRay(screen_pos), collision_color))
+			{
+				ground_platform.transform.position = world_pos;
+			}
 		}
 	}
 
