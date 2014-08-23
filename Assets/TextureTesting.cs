@@ -80,6 +80,9 @@ public class TextureTesting : MonoBehaviour
 
 	bool CheckBlackWhite(Ray castThis, COLLISION_COLOR_PRORITY color)
 	{// http://answers.unity3d.com/questions/189998/2d-collisions-on-a-texture2d-with-transparent-area.html
+
+		// TODO: Understand why this works
+
 		RaycastHit hit;
 		if(Physics.Raycast(castThis, out hit))
 		{
@@ -87,12 +90,13 @@ public class TextureTesting : MonoBehaviour
 			// material and texture. Also we should ignore primitive colliders.
 			Renderer hitRender = hit.collider.renderer;
 			MeshCollider meshCollider = hit.collider as MeshCollider;
+
 			if (hitRender == null || hitRender.sharedMaterial == null ||
 			    hitRender.sharedMaterial.mainTexture == null || meshCollider == null)
 				return false;
+
 			Texture2D hitTex = hitRender.material.mainTexture as Texture2D;
-			Vector2 pixelUV = hit.textureCoord;
-			pixelUV = new Vector2(pixelUV.x * tex.width, pixelUV.y * tex.height);
+			Vector2 pixelUV  = hit.textureCoord;
 			
 			// this is the important bit!
 			// Make sure that the texture has 'isReadable' set to true, or this won't work.
