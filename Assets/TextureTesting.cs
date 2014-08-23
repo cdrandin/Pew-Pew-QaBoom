@@ -97,6 +97,7 @@ public class TextureTesting : MonoBehaviour
 
 			Texture2D hitTex = hitRender.material.mainTexture as Texture2D;
 			Vector2 pixelUV  = hit.textureCoord;
+			pixelUV          = new Vector2(pixelUV.x * tex.width, pixelUV.y * tex.height);
 			
 			// this is the important bit!
 			// Make sure that the texture has 'isReadable' set to true, or this won't work.
